@@ -1,13 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>商品管理後台</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    form, table {
+      background: white;
+      padding: 16px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+    input, button {
+      padding: 8px;
+      margin-right: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>商品管理後台</h1>
+
+<form id="product-form">
+  <input type="text" id="name" placeholder="商品名稱" required />
+  <input type="number" id="price" placeholder="價格" required />
+  <input type="number" id="stock" placeholder="庫存" />
+  <button type="submit">新增商品</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>名稱</th>
+      <th>價格</th>
+      <th>庫存</th>
+    </tr>
+  </thead>
+  <tbody id="product-list"></tbody>
+</table>
+
+<script type="module" src="/main.js"></script>
+</body>
 </html>

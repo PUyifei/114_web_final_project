@@ -1,15 +1,13 @@
 import Product from '../models/Product.js';
 
-/**
- * 新增商品
- */
+// Create
 export async function createProduct(req, res) {
   try {
     const product = await Product.create(req.body);
     res.status(201).json({
       success: true,
       data: product,
-      message: 'Product created successfully'
+      message: 'Product created'
     });
   } catch (error) {
     res.status(400).json({
@@ -19,9 +17,7 @@ export async function createProduct(req, res) {
   }
 }
 
-/**
- * 取得所有商品
- */
+// Read all
 export async function getProducts(req, res) {
   try {
     const products = await Product.find().sort({ createdAt: -1 });
@@ -37,9 +33,7 @@ export async function getProducts(req, res) {
   }
 }
 
-/**
- * 取得單一商品
- */
+// Read one
 export async function getProductById(req, res) {
   try {
     const product = await Product.findById(req.params.id);
@@ -49,22 +43,19 @@ export async function getProductById(req, res) {
         message: 'Product not found'
       });
     }
-
     res.json({
       success: true,
       data: product
     });
-  } catch (error) {
+  } catch {
     res.status(400).json({
       success: false,
-      message: 'Invalid product ID'
+      message: 'Invalid product id'
     });
   }
 }
 
-/**
- * 更新商品
- */
+// Update
 export async function updateProduct(req, res) {
   try {
     const product = await Product.findByIdAndUpdate(
@@ -83,7 +74,7 @@ export async function updateProduct(req, res) {
     res.json({
       success: true,
       data: product,
-      message: 'Product updated successfully'
+      message: 'Product updated'
     });
   } catch (error) {
     res.status(400).json({
@@ -93,13 +84,10 @@ export async function updateProduct(req, res) {
   }
 }
 
-/**
- * 刪除商品
- */
+// Delete
 export async function deleteProduct(req, res) {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
-
     if (!product) {
       return res.status(404).json({
         success: false,
@@ -109,12 +97,12 @@ export async function deleteProduct(req, res) {
 
     res.json({
       success: true,
-      message: 'Product deleted successfully'
+      message: 'Product deleted'
     });
-  } catch (error) {
+  } catch {
     res.status(400).json({
       success: false,
-      message: 'Invalid product ID'
+      message: 'Invalid product id'
     });
   }
 }
